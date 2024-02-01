@@ -1,0 +1,40 @@
+/* CurrentWeather.css */
+
+.current-weather {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+
+.current-weather h2 {
+  margin-bottom: 15px; /* Adjusted margin bottom for separation */
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.current-weather p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.weather-icon {
+  margin-top: 15px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .current-weather {
+    padding: 15px;
+  }
+
+  .current-weather h2 {
+    font-size: 1.2rem;
+  }
+
+  .current-weather p {
+    font-size: 0.9rem;
+  }
+}

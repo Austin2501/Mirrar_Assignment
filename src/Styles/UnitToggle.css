@@ -1,0 +1,26 @@
+/* UnitToggle.css */
+
+.unit-toggle-container {
+  margin-top: 10px;
+}
+
+.unit-toggle-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px; /* Match padding with the search button */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.unit-toggle-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design */
+@media only screen and (max-width: 768px) {
+  .unit-toggle-button {
+    padding: 8px 16px; /* Adjust padding for smaller screens */
+  }
+}
