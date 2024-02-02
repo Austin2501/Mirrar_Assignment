@@ -8,6 +8,7 @@ import '../Styles/WeatherForecast.css'; // Import CSS file
 const API_KEY = '58346ee8026ae4958fd92d5aab574de7';
 
 function WeatherForecast() {
+  // State variables
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [unit, setUnit] = useState('metric'); // Default to Celsius
@@ -15,7 +16,9 @@ function WeatherForecast() {
   const [isSearchClicked, setIsSearchClicked] = useState(false); // Track if search button is clicked
   const [selectedTab, setSelectedTab] = useState('current'); // Track selected tab
 
+  // Function to handle search button click
   const handleSearch = () => {
+    // Validate city input
     if (city.trim() === '') {
       setError('Please enter a city name');
       return;
@@ -25,11 +28,11 @@ function WeatherForecast() {
     fetchWeatherData();
   };
 
+  // Function to fetch weather data from API
   const fetchWeatherData = () => {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${API_KEY}`)
       .then(response => {
         setWeatherData(response.data);
-        // console.log(response.data);
       })
       .catch(error => {
         if (error.response && error.response.status === 404) {
@@ -43,9 +46,11 @@ function WeatherForecast() {
 
   return (
     <div className="weather-forecast-container">
+      {/* Unit toggle component */}
       <div className="unit-toggle">
         <UnitToggle unit={unit} setUnit={setUnit} />
       </div>
+      {/* Search bar */}
       <div className="search-bar">
         <input
           type="text"
@@ -57,7 +62,9 @@ function WeatherForecast() {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
+      {/* Error message */}
       {error && <p className="error">{error}</p>}
+      {/* Tabs for current weather and forecast */}
       <div className="tabs">
         <button
           className={selectedTab === 'current' ? 'active-tab' : ''}
@@ -72,6 +79,7 @@ function WeatherForecast() {
           5-Day Forecast
         </button>
       </div>
+      {/* Render weather components based on selected tab */}
       {weatherData && (
         <div>
           {selectedTab === 'current' && (

@@ -1,48 +1,51 @@
-/* CurrentWeather.css */
-
+/* Styling for the container holding current weather information */
 .current-weather {
   background-color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 20px;
   text-align: center;
+  border: 1px solid #ccc; /* Border for better visibility */
+  margin-bottom: 20px; /* Added margin bottom for separation */
 }
 
-.current-weather {
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-}
-
+/* Styling for wind information */
 .wind-info {
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Margin bottom for separation */
 }
 
+/* Styling for h2 within current-weather */
 .current-weather h2 {
   margin-bottom: 15px; /* Adjusted margin bottom for separation */
   font-size: 1.5rem;
   color: #333;
 }
 
+/* Styling for p elements within current-weather */
 .current-weather p {
   margin-bottom: 10px;
   font-size: 1rem;
   color: #555;
 }
 
+/* Styling for weather icon within current-weather */
 .weather-icon {
-  margin-top: 15px;
+  margin-top: 15px; /* Added margin top for separation */
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
+  /* Adjust padding for smaller screens */
   .current-weather {
     padding: 15px;
   }
 
+  /* Adjust font size for h2 within current-weather for smaller screens */
   .current-weather h2 {
     font-size: 1.2rem;
   }
 
+  /* Adjust font size for p elements within current-weather for smaller screens */
   .current-weather p {
     font-size: 0.9rem;
   }

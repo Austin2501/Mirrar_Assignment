@@ -7,12 +7,13 @@ function CurrentWeather({ weatherData, unit }) {
   const { main, wind, weather } = weatherData;
   const [isVisible, setIsVisible] = useState(false); // State to track visibility
 
+  // Function to convert temperature based on unit
   const convertTemperature = (temp) => {
     return unit === 'metric' ? temp.toFixed(2) : ((temp * 9 / 5) + 32).toFixed(2);
   };
 
+  // Function to map weather condition to FontAwesome icons
   const getWeatherIcon = (weatherId) => {
-    // Map weather condition to FontAwesome icons
     switch (true) {
       case weatherId >= 200 && weatherId < 300: // Thunderstorm
         return <FontAwesomeIcon icon={faCloudRain} />;
@@ -31,20 +32,23 @@ function CurrentWeather({ weatherData, unit }) {
     }
   };
 
+  // Function to convert wind direction in degrees to a human-readable direction
   const getWindDirection = (degrees) => {
-    // Convert wind direction in degrees to a human-readable direction
     const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
     const index = Math.round((degrees % 360) / 45);
     return directions[index % 8];
   };
 
+  // Function to toggle visibility of weather details
   const toggleVisibility = () => {
     setIsVisible(!isVisible); // Toggle visibility state
   };
 
   return (
     <div>
+      {/* Header to toggle visibility of weather details */}
       <h2 onClick={toggleVisibility} style={{ cursor: 'pointer' }}>Current Weather</h2>
+      {/* Render weather details if isVisible is true */}
       {isVisible && (
         <div className="current-weather">
           <p>Temperature: {convertTemperature(main.temp)}°{unit === 'metric' ? 'C' : 'F'}</p>

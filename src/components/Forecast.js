@@ -7,9 +7,11 @@ import '../Styles/Forecast.css'; // Import CSS file
 const API_KEY = '58346ee8026ae4958fd92d5aab574de7';
 
 function Forecast({ city, unit, isSearchClicked, setIsSearchClicked }) {
+  // State variables
   const [forecastData, setForecastData] = useState(null);
   const [isForecastVisible, setIsForecastVisible] = useState(false); // State to track visibility of forecast
 
+  // Fetch forecast data from API when city or unit changes
   useEffect(() => {
     setIsForecastVisible(false); // Reset forecast visibility when city or unit changes
   
@@ -17,7 +19,7 @@ function Forecast({ city, unit, isSearchClicked, setIsSearchClicked }) {
       axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&appid=${API_KEY}`)
         .then(response => {
           setForecastData(response.data);
-          setIsSearchClicked(false); 
+          setIsSearchClicked(false); // Reset search clicked state
         })
         .catch(error => {
           console.error('Error fetching forecast data:', error);
@@ -25,13 +27,13 @@ function Forecast({ city, unit, isSearchClicked, setIsSearchClicked }) {
     }
   }, [city, unit, isSearchClicked, setIsSearchClicked]);
 
+  // Function to toggle forecast visibility
   const toggleForecastVisibility = () => {
     setIsForecastVisible(!isForecastVisible); // Toggle visibility state
-    // console.log('Forecast visibility:', isForecastVisible); // Log visibility state
   };
 
+  // Function to map weather condition to FontAwesome icons
   const getWeatherIcon = (weatherId) => {
-    // Map weather condition to FontAwesome icons
     switch (true) {
       case weatherId >= 200 && weatherId < 300: // Thunderstorm
         return <FontAwesomeIcon icon={faCloudRain} />;
@@ -50,6 +52,7 @@ function Forecast({ city, unit, isSearchClicked, setIsSearchClicked }) {
     }
   };
 
+  // Function to group forecast data by day
   const groupForecastByDay = () => {
     if (!forecastData) return [];
 
@@ -66,18 +69,23 @@ function Forecast({ city, unit, isSearchClicked, setIsSearchClicked }) {
     return Object.entries(groupedForecast);
   };
 
+  // Function to convert temperature based on unit
   const convertTemperature = (temp) => {
     return unit === 'metric' ? temp.toFixed(2) : ((temp * 9 / 5) + 32).toFixed(2);
   };
 
   return (
     <div>
+      {/* Header to toggle forecast visibility */}
       <h2 onClick={toggleForecastVisibility} style={{ cursor: 'pointer' }}>5-Day Forecast</h2>
-      {isForecastVisible && ( // Render forecast only if visible
+      {/* Render forecast only if visible */}
+      {isForecastVisible && (
         <div className="forecast-container">
+          {/* Map and render forecast data by day */}
           {groupForecastByDay().map(([date, forecasts]) => (
             <div key={date} className="forecast-day">
               <h3>{new Date(date).toDateString()}</h3>
+              {/* Map and render forecast items for each day */}
               {forecasts.map((forecastItem, index) => (
                 <div key={index} className="forecast-item">
                   <p>Time: {forecastItem.dt_txt.split(' ')[1]}</p>

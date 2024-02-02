@@ -1,6 +1,4 @@
-/* WeatherForecast.css */
-
-/* WeatherForecast.css */
+/* Container styling for the weather forecast */
 .weather-forecast-container {
   max-width: 800px;
   margin: 0 auto;
@@ -9,51 +7,60 @@
   border-radius: 8px;
 }
 
+/* Styling for the unit toggle section */
 .unit-toggle {
   margin-bottom: 20px;
   margin-right: 18px;
   text-align: right;
 }
 
+/* Styling for the search bar section */
 .search-bar {
   margin-bottom: 20px;
 }
 
+/* Styling for the input field in the search bar */
 .search-bar input {
   padding: 10px;
   width: calc(100% - 150px);
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 16px;
   outline: none;
 }
 
+/* Styling for the search button in the search bar */
 .search-bar button {
   margin-left: 20px;
   padding: 10px 20px;
   background-color: #4caf50;
   color: #fff;
   border: none;
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
+/* Hover effect for the search button */
 .search-bar button:hover {
   background-color: #45a049;
 }
+
+/* Styling for error messages */
 .error {
   color: #f44336;
   margin-bottom: 20px;
 }
 
+/* Styling for the tabs section */
 .tabs {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
+/* Styling for individual tab buttons */
 .tabs button {
   padding: 10px 20px;
   background-color: #ddd;
@@ -63,6 +70,7 @@
   cursor: pointer;
 }
 
+/* Styling for the active tab button */
 .tabs button.active-tab {
   background-color: #4caf50;
   color: #fff;
@@ -70,6 +78,7 @@
 
 /* Responsive Styles */
 @media only screen and (max-width: 600px) {
+  /* Adjust input width for smaller screens */
   .search-bar input {
     width: calc(100% - 60px);
   }
@@ -77,33 +86,43 @@
 
 /* Responsive design */
 @media screen and (max-width: 600px) {
+  /* Change flex direction to column for smaller screens */
   .search-bar {
-    flex-direction: column; /* Change flex direction to column for smaller screens */
-    align-items: flex-start; /* Align items to start */
+    flex-direction: column;
+    /* Align items to start */
+    align-items: flex-start;
   }
 
+  /* Full width for input on smaller screens */
   .search-bar input[type="text"] {
-    width: 100%; /* Full width for input on smaller screens */
-    margin-bottom: 10px; /* Add margin bottom to separate input and button */
+    width: 100%;
+    /* Add margin bottom to separate input and button */
+    margin-bottom: 10px;
   }
 
+  /* Full width for button on smaller screens */
   .search-bar button {
-    width: 100%; /* Full width for button on smaller screens */
-    margin-left: 0; /* Remove margin for button on smaller screens */
+    width: 100%;
+    /* Remove margin for button on smaller screens */
+    margin-left: 0;
   }
 
+  /* Center align toggle button on smaller screens */
   .unit-toggle {
-    text-align: center; /* Center align toggle button on smaller screens */
+    text-align: center;
   }
 }
 
 @media only screen and (max-width: 768px) {
+  /* Adjust width for smaller screens */
   .search-bar input[type="text"] {
-    width: calc(100% - 25px); /* Adjust width for smaller screens */
+    width: calc(100% - 25px);
   }
 
+  /* Adjust button padding for smaller screens */
   .search-bar button {
-    padding: 8px; /* Adjust button padding for smaller screens */
-    font-size: 14px; /* Adjust button font size for smaller screens */
+    padding: 8px;
+    /* Adjust button font size for smaller screens */
+    font-size: 14px;
   }
 }
