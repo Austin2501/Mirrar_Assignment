@@ -8,6 +8,15 @@
   text-align: center;
 }
 
+.current-weather {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.wind-info {
+  margin-bottom: 10px;
+}
+
 .current-weather h2 {
   margin-bottom: 15px; /* Adjusted margin bottom for separation */
   font-size: 1.5rem;

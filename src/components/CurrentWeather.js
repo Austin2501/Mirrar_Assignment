@@ -1,11 +1,11 @@
-// CurrentWeather.js
-import React from 'react';
+import React, { useState } from 'react';
 import '../Styles/CurrentWeather.css'; // Import CSS file
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faCloud, faCloudRain, faSnowflake, faWind } from '@fortawesome/free-solid-svg-icons';
 
 function CurrentWeather({ weatherData, unit }) {
   const { main, wind, weather } = weatherData;
+  const [isVisible, setIsVisible] = useState(false); // State to track visibility
 
   const convertTemperature = (temp) => {
     return unit === 'metric' ? temp.toFixed(2) : ((temp * 9 / 5) + 32).toFixed(2);
@@ -38,17 +38,23 @@ function CurrentWeather({ weatherData, unit }) {
     return directions[index % 8];
   };
 
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible); // Toggle visibility state
+  };
+
   return (
     <div>
-      <h2>Current Weather</h2>
-      <div className="current-weather">
-        <p>Temperature: {convertTemperature(main.temp)}°{unit === 'metric' ? 'C' : 'F'}</p>
-        <p>Min Temperature: {convertTemperature(main.temp_min)}°{unit === 'metric' ? 'C' : 'F'}</p>
-        <p>Max Temperature: {convertTemperature(main.temp_max)}°{unit === 'metric' ? 'C' : 'F'}</p>
-        <p>Humidity: {main.humidity}%</p>
-        <p className="wind-info">Wind: {getWindDirection(wind.deg)} {wind.speed} m/s <FontAwesomeIcon icon={faWind} /></p>
-        <p>Weather: {weather[0].description} {getWeatherIcon(weather[0].id)}</p>
-      </div>
+      <h2 onClick={toggleVisibility} style={{ cursor: 'pointer' }}>Current Weather</h2>
+      {isVisible && (
+        <div className="current-weather">
+          <p>Temperature: {convertTemperature(main.temp)}°{unit === 'metric' ? 'C' : 'F'}</p>
+          <p>Min Temperature: {convertTemperature(main.temp_min)}°{unit === 'metric' ? 'C' : 'F'}</p>
+          <p>Max Temperature: {convertTemperature(main.temp_max)}°{unit === 'metric' ? 'C' : 'F'}</p>
+          <p>Humidity: {main.humidity}%</p>
+          <p className="wind-info">Wind: {getWindDirection(wind.deg)} {wind.speed} m/s <FontAwesomeIcon icon={faWind} /></p>
+          <p>Weather: {weather[0].description} {getWeatherIcon(weather[0].id)}</p>
+        </div>
+      )}
     </div>
   );
 }

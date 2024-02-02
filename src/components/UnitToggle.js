@@ -3,9 +3,10 @@
 import React from 'react';
 import '../Styles/UnitToggle.css'; // Import CSS file
 
-function UnitToggle({ unit, setUnit }) {
+function UnitToggle({ unit, setUnit}) {
   const toggleUnit = () => {
     setUnit(unit === 'metric' ? 'imperial' : 'metric');
+
   };
 
   return (

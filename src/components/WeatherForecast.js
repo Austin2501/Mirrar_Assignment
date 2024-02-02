@@ -13,6 +13,7 @@ function WeatherForecast() {
   const [unit, setUnit] = useState('metric'); // Default to Celsius
   const [error, setError] = useState('');
   const [isSearchClicked, setIsSearchClicked] = useState(false); // Track if search button is clicked
+  const [selectedTab, setSelectedTab] = useState('current'); // Track selected tab
 
   const handleSearch = () => {
     if (city.trim() === '') {
@@ -28,6 +29,7 @@ function WeatherForecast() {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${API_KEY}`)
       .then(response => {
         setWeatherData(response.data);
+        // console.log(response.data);
       })
       .catch(error => {
         if (error.response && error.response.status === 404) {
@@ -50,14 +52,34 @@ function WeatherForecast() {
           placeholder="Enter city name"
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          id="cityInput"
+          name="cityInput"
         />
         <button onClick={handleSearch}>Search</button>
       </div>
       {error && <p className="error">{error}</p>}
+      <div className="tabs">
+        <button
+          className={selectedTab === 'current' ? 'active-tab' : ''}
+          onClick={() => setSelectedTab('current')}
+        >
+          Current Weather
+        </button>
+        <button
+          className={selectedTab === 'forecast' ? 'active-tab' : ''}
+          onClick={() => setSelectedTab('forecast')}
+        >
+          5-Day Forecast
+        </button>
+      </div>
       {weatherData && (
         <div>
-          <CurrentWeather weatherData={weatherData} unit={unit} />
-          <Forecast city={city} unit={unit} isSearchClicked={isSearchClicked} /> {/* Pass isSearchClicked prop */}
+          {selectedTab === 'current' && (
+            <CurrentWeather weatherData={weatherData} unit={unit} />
+          )}
+          {selectedTab === 'forecast' && (
+            <Forecast city={city} unit={unit} isSearchClicked={isSearchClicked} setIsSearchClicked={setIsSearchClicked} />
+          )}
         </div>
       )}
     </div>

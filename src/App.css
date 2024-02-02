@@ -6,6 +6,14 @@ body {
   padding: 0;
 }
 
+h2 {
+  cursor: pointer; /* Add pointer cursor to indicate clickability */
+}
+
+h2:hover {
+  color: #007bff; /* Change color on hover for better user feedback */
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
