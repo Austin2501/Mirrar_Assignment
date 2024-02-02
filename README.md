@@ -2,6 +2,11 @@
 
 This is a single-page weather forecast application that allows users to view current weather details and a 5-day forecast for any city. The application is built using HTML, CSS, JavaScript, and ReactJS, and it utilizes the OpenWeatherMap API to fetch weather data.
 
+## Live Demo
+Check out the live Weather Forecast Dashboard [here](https://austinwebapp.netlify.app/).
+
+*Deployed on Netlify for live access.*
+
 ## Features
 
 - **Current Weather Details**: Users can enter a city name and view the current temperature, minimum and maximum temperature, humidity, wind speed and direction, description of the weather, and an appropriate weather icon.
